@@ -43,8 +43,6 @@ for character in gString.characters {
 //: ### Exercise 5
 //: Write a program that tells you whether or not this string contains the substring "tuna".
 let word = "fortunate"
-
-
 // Solution
 if word.range(of: "tuna") != nil {
     print("yes")
