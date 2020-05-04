@@ -7,6 +7,7 @@ import Foundation
 class LightSwitch {
     
     var on: Bool = true
+    var dimmer: Int = 7
 }
 
 var livingRoomSwitch = LightSwitch()
@@ -26,7 +27,7 @@ let ticketPrice = 7.5
 let allowance = 10.0
 var iceCreamPrice = 3.0
 
-var pic = UIImage(named:"Chloe.png")!
+// var pic = UIImage(named:"Chloe.png")!
 
 if allowance >= ticketPrice + iceCreamPrice {
     print("Let's go to the movies!")

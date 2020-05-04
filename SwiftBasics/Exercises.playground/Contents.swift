@@ -12,8 +12,8 @@ let index2 = Int(arc4random() % 9)
 let sentence = "The \(nounArray[6]) spilled her \(nounArray[7])."
 let  sillySentence = "The \(nounArray[index1]) jumped over the \(nounArray[index2])."
 //: Now try it yourself! Declare a new string that incorporates objects from the noun array above. Write one sentence that makes sense and one "Madlib" sentence with randomly chosen words. Feel free to add words to the noun array or declare a new array.
-let yourSentence = "TODO: Incorporate objects from the noun array here."
-let yourSillySentence = "TODO: Incorporate randomly chosen objects from the noun array here."
+let yourSentence = "The \(nounArray[2]) is lit by the \(nounArray[8])"
+let yourSillySentence = "The \(nounArray[index1]) ate a \(nounArray[index2])."
 //: ### Exercise 2
 //: Recreate the shoutString by using the didYouKnowString as a stem.
 let didYouKnowString = "Did you know that the Swift String class comes with lots of useful methods?"
