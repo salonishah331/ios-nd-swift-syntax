@@ -9,6 +9,8 @@ import UIKit
 var moviesDict:Dictionary = [ "Star Wars":"George Lucas", "Point Break":"Kathryn Bigelow"]
 var movie = "Point Break"
 var director = moviesDict[movie]
+
+
 //: 1b) Test your code by inserting different values for the variable `movie`.
 // Solution
 //if let director = moviesDict[movie] {
