@@ -19,7 +19,7 @@ enum Level {
     case high
 }
 
-class Teenager {
+class Teenager: Babysitter {
     var age: Int
     let responsible: Bool
     let patience: Level
@@ -29,6 +29,19 @@ class Teenager {
         self.responsible = responsible
         self.patience = patience
     }
+    func playCandyland(_ numberOfTimes: Int) {
+        var count = 0
+        while count < numberOfTimes {
+            print("We made it to the Candy Castle!")
+            count += 1
+        }
+    }
+    func read(_ book: String, firstLine: String, asleep: Bool) -> Bool {
+        print("Of course, we can read \(book) again. \(firstLine)...")
+        var isAsleep = asleep
+        isAsleep = true
+        return isAsleep
+    }
 }
 
 protocol Babysitter {
@@ -36,7 +49,9 @@ protocol Babysitter {
     func read(_ book: String, firstLine: String, asleep: Bool) -> Bool
 }
 
-
+var bestBabysitter = Teenager(age: 15, responsible: true, patience: .high)
+bestBabysitter.playCandyland(15)
+bestBabysitter.read("Yertle the Turtle", firstLine: "On the faraway island of Sala-ma-sond, Yertle the Turtle was king of the pond", asleep: false)
 //: __Problem 2__
 //:
 //:Below find the class Animal along with the Adorable protocol.
@@ -59,13 +74,23 @@ protocol Adorable {
 
 var cuteMouse = UIImage(named: "mouseBall")
 
-class Animal { 
+class Animal : Adorable {
     let species: String
     let numberOfLegs: Int
+    
+    var size = Size.tiny
+    var softFur = true
     
     init(species: String, numberOfLegs: Int) {
         self.species = species
         self.numberOfLegs = numberOfLegs
+    }
+    
+    func frolick() {
+        print("Frolicking")
+    }
+    func curlIntoSmallBall() {
+        print("Jumping")
     }
 }
 var pic = UIImage(named: "frolick.jpg")
@@ -109,6 +134,14 @@ class Friend {
         isEmpty = false
         return isEmpty
     }
+    
+}
+
+protocol Mover {
+    var willWorkForPizzaAndBeer: Bool { get }
+
+    func carryCouch() -> String
+    func loadVan(_ empty: Bool) -> Bool
 }
 
 //: Problem 4
@@ -147,7 +180,7 @@ class Squirrel: Hoarder {
     
 }
 
-class ScrubJay {
+class ScrubJay: Hoarder {
     let wings = 2
     let female: Bool
     
@@ -157,6 +190,14 @@ class ScrubJay {
     
     func fly() -> String {
         return "Swoop!"
+    }
+    
+    func cache(_ foodItem: String) -> String {
+        return "I'll be back for you later, little \(foodItem)s."
+    }
+    
+    func pilfer() -> String {
+        return "Jackpot! Your stash is mine!"
     }
 }
 
@@ -202,8 +243,18 @@ class Minion {
     init(name:String) {
         self.name =  name
     }
+    
+    
 }
 
+extension Minion: DirtyDeeds {
+func cheat() {
+    print("Mwa ha ha!")
+}
+
+func steal() {
+    print("Mwa ha ha!")
+}
 //: __Problem 6__
 //:
 //: This extension from the [Coding Explorer Blog](http://www.codingexplorer.com/swift-extensions/) makes it easier to initialize a UIColor object from RGB values that are integers.
@@ -213,21 +264,23 @@ class Minion {
 //:
 //: __6b.__
 //: Demonstrate how you would call the pistachio() method.
-extension UIColor
-{
-    convenience init(redValue: Int, greenValue: Int, blueValue: Int)
-    {
-        let newRed   = CGFloat(Double(redValue) / 255.0)
-        let newGreen = CGFloat(Double(greenValue) / 255.0)
-        let newBlue  = CGFloat(Double(blueValue) / 255.0)
-        
-        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
-    }
-}
-
-
-
-
-
-
-
+//extension UIColor
+//{
+//    convenience init(redValue: Int, greenValue: Int, blueValue: Int)
+//    {
+//        let newRed   = CGFloat(Double(redValue) / 255.0)
+//        let newGreen = CGFloat(Double(greenValue) / 255.0)
+//        let newBlue  = CGFloat(Double(blueValue) / 255.0)
+//        
+//        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
+//    }
+//
+//
+//    class func pistachio() -> UIColor {
+//        return UIColor(redValue: 147, greenValue: 197, blueValue: 114)
+//    }
+//    UIColor.pistachio()
+//}
+//
+//
+//
