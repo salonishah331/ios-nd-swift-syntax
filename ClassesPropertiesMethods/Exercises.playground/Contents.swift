@@ -13,10 +13,17 @@ struct Tail {
 class Animal {
     var species: String = ""
     let tail: Tail
+
+    init(species: String, tailLength: Double) {
+            self.species = species
+            self.tail = Tail(lengthInCm: tailLength)
+        }
 }
 //: __1b.__
 //: Instantiate and initialize a few different Animals.
-
+var kanga = Animal(species: "red kangaroo", tailLength: 100)
+var gator = Animal(species: "American alligator", tailLength: 150)
+var beaver = Animal(species: "North American beaver", tailLength: 30)
 //: __Problem 2__
 //:
 //: Below are the beginnings of the Peach class.
@@ -25,12 +32,25 @@ class Peach {
     
     // Softness is rated on a scale from 1 to 5, with 5 being the softest
     var softness: Int
+    static let varieties = ["donut", "yellow", "white"]
     
     init(variety: String, softness: Int) {
         self.variety = variety
         self.softness = softness
     }
+    
+    func ripen() {
+        self.softness += 1
+        if self.softness > 4 {
+            print("Ripe")
+        } else {
+            print( "Not Ripe")
+        }
+    }
 }
+
+let myPeach = Peach(variety: "yellow", softness: 2)
+myPeach.ripen()
 //: __2a.__
 //: Add a type property to the Peach class called "varieties". It should hold an array of different types of peaches.
 //:
@@ -50,6 +70,12 @@ class FluffyDog {
     let fluffiness: Int
     let droolFactor: Int
     
+    var cuddlability: Int {
+        get {
+            return self.fluffiness - self.droolFactor
+        }
+    }
+    
     init(name: String, fluffiness: Int, droolFactor: Int) {
         self.name = name
         self.fluffiness = fluffiness
@@ -60,9 +86,12 @@ class FluffyDog {
         return "Where are you going, \(wheeledVehicle)? Wait for me! No, don't go! I will catch you!"
     }
 }
+
+
 //: __3b.__
 //: Instantiate and initialize an instance of the class, FluffyDog. Use it to call the method, chase().
-
+let myDog = FluffyDog(name: "Joe", fluffiness: 10, droolFactor: 4)
+myDog.chase("Car")
 //: __Problem 4__
 //:
 //: __4a.__
@@ -83,13 +112,35 @@ class ChattyDog {
         self.breed = breed
         self.size = size
     }
+    
+    func bark(size: Size) -> String {
+        switch size {
+        case .small:
+            return "yip yip"
+        case .medium:
+            return "arf arf"
+        case .large:
+            return "woof woof"
+        }
+    }
 }
 //: __4b.__
 //: Create an instance of ChattyDog and use it to call the method, bark().
-
+let talkDog = ChattyDog(name:"Woofie", breed:"Cockapoo", size: .small)
+talkDog.bark(size: talkDog.size)
 //: __4c.__
 //: Rewrite the method, bark(), as a type method and rename it speak(). Call your type method to test it out.
-
+//static func speak(_ size: Size) -> String {
+//    switch size {
+//    case .small:
+//        return "yip yip"
+//    case .medium:
+//        return "arf arf"
+//    case .large:
+//        return "woof woof"
+//    }
+//}
+//ChattyDog.speak(.medium)
 //: __Problem 5__
 //:
 //:__5a.__
@@ -107,6 +158,17 @@ enum NaturalDisaster {
 class House {
     var numberOfBedrooms: Int = 0
     let location: Quality
+    
+    var worthyOfAnOffer: Bool {
+        get {
+            switch (numberOfBedrooms, location) {
+            case (2, .excellent), (3, .good), ( 3, .excellent):
+                return true
+            default:
+                return false
+            }
+        }
+    }
  
     func willStayStanding(_ naturalDisaster:NaturalDisaster)-> Bool {
         switch naturalDisaster {
@@ -118,6 +180,13 @@ class House {
             return false
         }
     }
+    
+    init(numberOfBedrooms: Int, location: Quality) {
+        self.numberOfBedrooms = numberOfBedrooms
+        self.location = location
+    }
+    
+    
 }
 
 //: __5b.__
