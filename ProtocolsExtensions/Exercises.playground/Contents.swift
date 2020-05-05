@@ -255,6 +255,8 @@ func cheat() {
 func steal() {
     print("Mwa ha ha!")
 }
+
+}
 //: __Problem 6__
 //:
 //: This extension from the [Coding Explorer Blog](http://www.codingexplorer.com/swift-extensions/) makes it easier to initialize a UIColor object from RGB values that are integers.
@@ -264,23 +266,23 @@ func steal() {
 //:
 //: __6b.__
 //: Demonstrate how you would call the pistachio() method.
-//extension UIColor
-//{
-//    convenience init(redValue: Int, greenValue: Int, blueValue: Int)
-//    {
-//        let newRed   = CGFloat(Double(redValue) / 255.0)
-//        let newGreen = CGFloat(Double(greenValue) / 255.0)
-//        let newBlue  = CGFloat(Double(blueValue) / 255.0)
-//        
-//        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
-//    }
-//
-//
-//    class func pistachio() -> UIColor {
-//        return UIColor(redValue: 147, greenValue: 197, blueValue: 114)
-//    }
-//    UIColor.pistachio()
-//}
-//
-//
-//
+extension UIColor
+{
+    convenience init(redValue: Int, greenValue: Int, blueValue: Int)
+    {
+        let newRed   = CGFloat(Double(redValue) / 255.0)
+        let newGreen = CGFloat(Double(greenValue) / 255.0)
+        let newBlue  = CGFloat(Double(blueValue) / 255.0)
+
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
+    }
+
+
+    class func pistachio() -> UIColor {
+        return UIColor(redValue: 147, greenValue: 197, blueValue: 114)
+    }
+   
+}
+
+UIColor.pistachio()
+
